@@ -9,7 +9,8 @@
 }
 
 .home {
-    width: 100%;
+    width: 95%;
+
   .navbar {
     width: 100%;
     margin-left: 70px;
@@ -46,11 +47,15 @@
         line-height: 150%;
         word-spacing: 2px;
         margin-left: 30px;
+        &:focus{
+          border: 1.6px solid #1A71F6;
+        }
       }
     }
     .right {
       display: flex;
       gap: 35px;
+      margin-right: -40px;
       button {
         width: 36px;
         height: 36px;
@@ -68,7 +73,8 @@
           border-radius: 2px;
           padding-top: px;
           padding-bottom: 4px;
-          padding-left: 3.5px;
+          padding-left: 2px;
+          padding-right: 2px;
         //   padding-right: 5px;
           background: #ea3030;
           color: #fff;
