@@ -34,6 +34,7 @@ const Login = () => {
             <input
               type="email"
               placeholder="Enter email"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -45,6 +46,7 @@ const Login = () => {
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <span
                 className="toggle"
