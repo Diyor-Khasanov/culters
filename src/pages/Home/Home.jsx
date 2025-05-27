@@ -1,89 +1,137 @@
-import "./Home.scss";
-import Logo from "./img/Logo.png";
-import PanelClose from "./img/Panel-close.png";
-import mail from "./img/mail.png";
-import notifications from "./img/notifications.png";
-import admin from "./img/admin.png";
-import company from "./img/company.png";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import './Home.scss';
 
-function Home() {
+const Home = () => {
+  const [search, setSearch] = useState('');
+  const [salesData, setSalesData] = useState([3000, 2311, 2111, 1661]);
+  const [totalRevenue, setTotalRevenue] = useState(81000);
+
+  useEffect(() => {
+    // Simulated fetch call
+    const timer = setTimeout(() => {
+      setSalesData(prev => prev.map(n => Math.floor(n * (1 + Math.random() * 0.05))));
+      setTotalRevenue(prev => prev + Math.floor(Math.random() * 1000));
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [salesData]);
+
   return (
-    <div className="home">
-      <div className="navbar">
-        <div className="left">
-          <img src={Logo} alt="logo" />
-          <img src={PanelClose} className="two" alt="panel close" />
-          <input type="text" placeholder="Search product" className="two" />
-        </div>
-
-        <div className="right">
-          <button>
-            <img src={mail} alt="mail" />
-            <sup>2</sup>
-          </button>
-          <button>
-            <img src={notifications} alt="notifications" />
-            <sup>8</sup>
-          </button>
-          <span></span>
-          <div className="img">
-            <img src={admin} alt="admin" />
-            <div className="box"></div>
-            <div className="text">
-              <h1 className="name">Guy Hawkins</h1>
-              <p className="description">Admin</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="hero">
-        <div className="dashboard">
-          <div className="company">
-            <img src={company} alt="company" />
-            <div className="text">
-              <p className="subtitle">Company</p>
-              <h3 className="title">Kanky Store</h3>
-            </div>
-          </div>
-
-          <h2 className="title">General</h2>
+    <div className="dashboard-container">
+      <aside className="sidebar">
+        <div className="brand">Cutlers</div>
+        <div className="sidebar-section">
+          <p className="sidebar-title">GENERAL</p>
           <ul>
+            <li className="active">Dashboard</li>
             <li>
-              <Link to="/">Home</Link>
+              Product
+              <ul className="sub-menu">
+                <li>Sneakers</li>
+                <li>Jacket</li>
+                <li>T-Shirt</li>
+                <li>Bag</li>
+              </ul>
             </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-            <li>
-              <Link to="/">Transaction</Link>
-            </li>
-            <li>
-              <Link to="/customer">Customers</Link>
-            </li>
-            <li>
-              <Link to="/"> Sales report</Link>
-            </li>
-          </ul>
-          <h2 className="title">TOOLS</h2>
-          <ul>
-            <li>
-              <Link to="/"> Account & Settings</Link>
-            </li>
-            <li>
-              <Link to="/"> Help</Link>
-            </li>
-            <li>
-              Dark Mode 
-              <input type="checkbox" />
-            </li>
-            <li>Guy Hawkins</li>
+            <li>Transaction</li>
+            <li>Customers</li>
+            <li>Sales Report</li>
           </ul>
         </div>
-        <div className="main"></div>
-      </div>
+        <div className="sidebar-section">
+          <p className="sidebar-title">TOOLS</p>
+          <ul>
+            <li>Account & Settings</li>
+            <li>Help</li>
+            <li>Dark Mode</li>
+          </ul>
+        </div>
+        <div className="profile">
+          <img src="https://i.pravatar.cc/40" alt="Guy Hawkins" />
+          <div>
+            <p>Guy Hawkins</p>
+            <span>Admin</span>
+          </div>
+        </div>
+      </aside>
+
+      <main className="main-content">
+        <header className="topbar">
+          <input
+            type="text"
+            placeholder="Search product"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="user-actions">
+            <span>🔔</span>
+            <span>💬</span>
+            <div className="user-info">
+              <img src="https://i.pravatar.cc/40" alt="Guy Hawkins" />
+              <div>
+                <p>Guy Hawkins</p>
+                <span>Admin</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section className="dashboard-overview">
+          <h1>Dashboard</h1>
+          <div className="sales-target">
+            <p>Sales Target</p>
+            <div className="target-progress">
+              <span>$231,032,444</span>
+              <input type="range" min="0" max="500000000" value="231032444"  />
+              <span>$500,000,000</span>
+            </div>
+          </div>
+
+          <div className="stats-cards">
+            <div className="card">Total Revenue <h2>${totalRevenue.toLocaleString()}</h2><p>📈 +8.6%</p></div>
+            <div className="card">Total Customer <h2>5,000</h2><p>📈 +1.5%</p></div>
+            <div className="card">Total Transactions <h2>12,000</h2><p>📈 +3.6%</p></div>
+            <div className="card">Total Product <h2>5,000</h2><p>📉 -1.5%</p></div>
+          </div>
+
+          <div className="chart-section">
+            <div className="chart">Sales chart here</div>
+            <div className="promo-box">
+              <h3>Increase your sales</h3>
+              <p>Discover the proven methods to skyrocket your sales...</p>
+              <button onClick={() => alert('Learn more clicked!')}>Learn More</button>
+            </div>
+          </div>
+
+          <div className="bottom-section">
+            <div className="map-box">Map with customer growth</div>
+            <div className="product-list">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Sales</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {salesData.map((sales, i) => (
+                    <tr key={i}>
+                      <td>Kanky Kitadakate (Green)</td>
+                      <td>$20.00</td>
+                      <td>{sales}</td>
+                      <td><span className="status success">Success</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
-}
+};
 
 export default Home;
