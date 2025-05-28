@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Home.scss';
+import logo from './img/Logo.png'
+import admin from './img/admin.png'
+import notifications from './img/notifications.png'
+import mail from './img/mail.png'
 
 const Home = () => {
   const [search, setSearch] = useState('');
@@ -19,7 +23,9 @@ const Home = () => {
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
-        <div className="brand">Cutlers</div>
+        <div className="brand">
+          <img src={logo} alt="" />
+        </div>
         <div className="sidebar-section">
           <p className="sidebar-title">GENERAL</p>
           <ul>
@@ -47,7 +53,7 @@ const Home = () => {
           </ul>
         </div>
         <div className="profile">
-          <img src="https://i.pravatar.cc/40" alt="Guy Hawkins" />
+          <img src={admin} alt="Guy Hawkins" />
           <div>
             <p>Guy Hawkins</p>
             <span>Admin</span>
@@ -64,10 +70,14 @@ const Home = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
           <div className="user-actions">
-            <span>🔔</span>
-            <span>💬</span>
+            <span>
+              <img src={notifications} alt="" />
+            </span>
+            <span>
+              <img src={mail} alt="" />
+            </span>
             <div className="user-info">
-              <img src="https://i.pravatar.cc/40" alt="Guy Hawkins" />
+              <img src={admin} alt="Guy Hawkins" />
               <div>
                 <p>Guy Hawkins</p>
                 <span>Admin</span>
