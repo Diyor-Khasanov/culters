@@ -1,0 +1,215 @@
+// ProductForm.scss
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$text-color: #333;
+$light-bg: #f5f5f5;
+$dark-bg: #222;
+$dark-text: #f5f5f5;
+$border-color: #ddd;
+$dark-border: #444;
+$error-color: #e74c3c;
+
+.product-form-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  color: $text-color;
+  transition: all 0.3s ease;
+
+  &.dark-mode {
+    background-color: $dark-bg;
+    color: $dark-text;
+
+    .form-section {
+      background-color: lighten($dark-bg, 5%);
+      border-color: $dark-border;
+    }
+
+    input,
+    select,
+    textarea {
+      background-color: lighten($dark-bg, 10%);
+      color: $dark-text;
+      border-color: $dark-border;
+    }
+
+    .header,
+    .form-actions {
+      border-color: $dark-border;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $border-color;
+
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid $border-color;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+  }
+
+  .form-section {
+    background-color: $light-bg;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid $border-color;
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: $primary-color;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+    }
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+
+    .form-group {
+      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .image-upload-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .image-upload-item {
+    input[type="file"] {
+      display: none;
+    }
+
+    label {
+      display: block;
+      padding: 15px;
+      border: 2px dashed $border-color;
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: $primary-color;
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+
+    .preview {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #666;
+      word-break: break-all;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid $border-color;
+
+    .save-button {
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+
+    .user-info {
+      font-size: 0.9rem;
+      color: #666;
+      text-align: right;
+
+      span {
+        display: block;
+      }
+    }
+  }
+}
