@@ -1,0 +1,332 @@
+// EditProductForm.scss
+$primary-color: #4a6fa5;
+$secondary-color: #6b8c42;
+$text-color: #333;
+$light-bg: #f8f9fa;
+$dark-bg: #1a1a1a;
+$dark-text: #e0e0e0;
+$border-color: #ddd;
+$dark-border: #444;
+$active-color: #4a6fa5;
+$table-border: #e0e0e0;
+
+.edit-product-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  color: $text-color;
+  transition: all 0.3s ease;
+
+  &.dark-mode {
+    background-color: $dark-bg;
+    color: $dark-text;
+
+    .form-section,
+    .index-section,
+    .transaction-section {
+      background-color: lighten($dark-bg, 5%);
+      border-color: $dark-border;
+    }
+
+    input,
+    select,
+    textarea,
+    table {
+      background-color: lighten($dark-bg, 10%);
+      color: $dark-text;
+      border-color: $dark-border;
+    }
+
+    .header,
+    .form-actions {
+      border-color: $dark-border;
+    }
+
+    .index-item {
+      border-color: $dark-border;
+      &.active {
+        background-color: $primary-color;
+      }
+    }
+
+    .product-details-table {
+      border-color: $dark-border;
+      td {
+        border-color: $dark-border;
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $border-color;
+
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid $border-color;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: $primary-color;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: $text-color;
+  }
+
+  h3,
+  h4 {
+    margin-top: 0;
+    color: $primary-color;
+  }
+
+  .section {
+    margin-bottom: 25px;
+
+    .description {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  }
+
+  .form-section {
+    background-color: $light-bg;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid $border-color;
+  }
+
+  .index-section,
+  .transaction-section {
+    margin-bottom: 20px;
+  }
+
+  .index-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .index-item {
+    padding: 8px 15px;
+    border: 1px solid $border-color;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+
+    &.active {
+      background-color: $primary-color;
+      color: white;
+      border-color: $primary-color;
+    }
+
+    &:hover:not(.active) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .customize-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .option {
+    padding: 8px 15px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+    }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .product-name-value,
+    .quantity-value {
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+    }
+  }
+
+  .product-details-table {
+    width: 100%;
+    border: 1px solid $table-border;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 20px 0;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 12px 15px;
+      border: 1px solid $table-border;
+      font-size: 0.95rem;
+
+      &:nth-child(odd) {
+        font-weight: 500;
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+    }
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+
+    .form-group {
+      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .image-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .image-action-item {
+    .image-placeholder {
+      height: 120px;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      border: 1px dashed $border-color;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 5px;
+
+      button {
+        flex: 1;
+        padding: 8px;
+        background: none;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.85rem;
+
+        &.active {
+          background-color: $primary-color;
+          color: white;
+          border-color: $primary-color;
+        }
+
+        &:hover:not(.active) {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid $border-color;
+
+    .save-button {
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+
+    .save-text {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+    }
+  }
+}
