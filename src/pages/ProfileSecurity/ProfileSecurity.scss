@@ -1,0 +1,267 @@
+// ProfileSettings.scss
+$primary-color: #4a6fa5;
+$secondary-color: #6b8c42;
+$text-color: #333;
+$light-bg: #f8f9fa;
+$dark-bg: #1a1a1a;
+$dark-text: #e0e0e0;
+$border-color: #ddd;
+$dark-border: #444;
+$checked-color: #4caf50;
+
+.profile-settings-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  color: $text-color;
+  transition: all 0.3s ease;
+
+  &.dark-mode {
+    background-color: $dark-bg;
+    color: $dark-text;
+
+    .security-section,
+    .query-section,
+    .tools-section,
+    .key-section {
+      background-color: lighten($dark-bg, 5%);
+      border-color: $dark-border;
+    }
+
+    input,
+    .query-item,
+    .tool-item,
+    .key-item {
+      background-color: lighten($dark-bg, 10%);
+      color: $dark-text;
+      border-color: $dark-border;
+    }
+
+    .header,
+    .tabs {
+      border-color: $dark-border;
+    }
+
+    .tab {
+      border-color: $dark-border;
+      &.active {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+
+  .header {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $border-color;
+
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: #666;
+
+      strong {
+        color: $text-color;
+        font-weight: 600;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: $primary-color;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: $primary-color;
+    font-size: 1.3rem;
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 25px;
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      margin-right: 5px;
+      transition: all 0.2s;
+
+      &.active {
+        background-color: rgba($primary-color, 0.1);
+        border-color: $border-color;
+        border-bottom-color: white;
+        font-weight: 500;
+      }
+
+      &:hover:not(.active) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  .security-section,
+  .query-section,
+  .tools-section,
+  .key-section {
+    background-color: $light-bg;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid $border-color;
+  }
+
+  .password-section {
+    .form-group {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+      }
+    }
+  }
+
+  .password-requirements {
+    margin: 20px 0;
+
+    .requirement {
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: #666;
+
+      &.met {
+        color: $checked-color;
+        &::before {
+          content: "[✓]";
+        }
+      }
+
+      &::before {
+        content: "[ ]";
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+
+    button {
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .update-button {
+      background-color: $primary-color;
+      color: white;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    .cancel-button {
+      background-color: #e0e0e0;
+      color: $text-color;
+
+      &:hover {
+        background-color: darken(#e0e0e0, 10%);
+      }
+    }
+  }
+
+  .query-category {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: $primary-color;
+  }
+
+  .query-items,
+  .tools-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .query-item,
+  .tool-item,
+  .key-item {
+    padding: 10px 15px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &.checked {
+      color: $checked-color;
+      &::before {
+        content: "[✓]";
+      }
+    }
+
+    &::before {
+      content: "[ ]";
+      margin-right: 5px;
+    }
+  }
+
+  .key-section {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .tabs {
+      flex-wrap: wrap;
+
+      .tab {
+        margin-bottom: 5px;
+        border-radius: 4px;
+        border-bottom: 1px solid $border-color;
+
+        &.active {
+          border-bottom-color: $border-color;
+        }
+      }
+    }
+
+    .action-buttons {
+      flex-direction: column;
+    }
+  }
+}
