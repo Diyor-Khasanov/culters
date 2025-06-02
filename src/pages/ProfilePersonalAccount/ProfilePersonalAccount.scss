@@ -1,0 +1,311 @@
+// AccountSettings.scss
+$primary-color: #4a6fa5;
+$secondary-color: #6b8c42;
+$text-color: #333;
+$light-bg: #f8f9fa;
+$dark-bg: #1a1a1a;
+$dark-text: #e0e0e0;
+$border-color: #ddd;
+$dark-border: #444;
+$table-bg: #fff;
+$dark-table-bg: #2a2a2a;
+
+.account-settings-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  color: $text-color;
+  transition: all 0.3s ease;
+
+  &.dark-mode {
+    background-color: $dark-bg;
+    color: $dark-text;
+
+    .profile-section,
+    .contact-section {
+      background-color: lighten($dark-bg, 5%);
+      border-color: $dark-border;
+    }
+
+    input,
+    select,
+    textarea {
+      background-color: lighten($dark-bg, 10%);
+      color: $dark-text;
+      border-color: $dark-border;
+    }
+
+    .header,
+    .tabs {
+      border-color: $dark-border;
+    }
+
+    .tab {
+      border-color: $dark-border;
+      &.active {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+
+    .profile-table {
+      .table-cell {
+        border-color: $dark-border;
+        &.label {
+          background-color: rgba($primary-color, 0.2);
+        }
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $border-color;
+
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid $border-color;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: $primary-color;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: $text-color;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: $primary-color;
+    font-size: 1.3rem;
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 25px;
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      margin-right: 5px;
+      transition: all 0.2s;
+
+      &.active {
+        background-color: rgba($primary-color, 0.1);
+        border-color: $border-color;
+        border-bottom-color: $table-bg;
+        font-weight: 500;
+      }
+
+      &:hover:not(.active) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  .profile-section,
+  .contact-section {
+    background-color: $light-bg;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid $border-color;
+  }
+
+  .profile-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    .table-row {
+      display: table-row;
+    }
+
+    .table-cell {
+      display: table-cell;
+      padding: 12px 15px;
+      border: 1px solid $border-color;
+      vertical-align: middle;
+
+      &.label {
+        font-weight: 500;
+        background-color: rgba(0, 0, 0, 0.03);
+        width: 25%;
+      }
+
+      &.value {
+        font-weight: normal;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+
+    button {
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .edit-button,
+    .update-button {
+      background-color: $primary-color;
+      color: white;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    .cancel-button {
+      background-color: #e0e0e0;
+      color: $text-color;
+
+      &:hover {
+        background-color: darken(#e0e0e0, 10%);
+      }
+    }
+  }
+
+  .contact-details {
+    .detail-item {
+      margin-bottom: 20px;
+
+      .detail-label {
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      .detail-value {
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-radius: 4px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+        min-height: 80px;
+        resize: vertical;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .profile-table {
+      display: block;
+
+      .table-row {
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      .table-cell {
+        display: block;
+        width: 100% !important;
+        border: none;
+        border-bottom: 1px solid $border-color;
+        padding: 10px 0;
+
+        &.label {
+          background: none;
+          font-weight: 600;
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    .tabs {
+      flex-wrap: wrap;
+
+      .tab {
+        margin-bottom: 5px;
+        border-radius: 4px;
+        border-bottom: 1px solid $border-color;
+
+        &.active {
+          border-bottom-color: $border-color;
+        }
+      }
+    }
+  }
+}
